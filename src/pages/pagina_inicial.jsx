@@ -31,15 +31,16 @@ export default class PaginaInicial extends Component {
             type="text"
             data-testid="input-player-name"
             value={this.state.nome}
-            onChange={this.nomeChange} 
+            onChange={this.nomeChange}
           />
         </label>
         <label htmlFor="email">
           E-mail
-          <input type="email"
+          <input
+            type="email"
             data-testid="input-gravatar-email"
             value={this.state.email}
-            onChange={this.emailChange} 
+            onChange={this.emailChange}
           />
         </label>
         <button data-testid="btn-play" onClick={() => { console.log(this.state); }}>
