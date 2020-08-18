@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export default class PaginaInicial extends Component {
   constructor(props) {
@@ -20,20 +20,29 @@ export default class PaginaInicial extends Component {
   render() {
     return (
       <div>
-        <header>
-          {/* <Link to="" data-testid="btn-settings">
+        {/* <header>
+        <Link to="" data-testid="btn-settings">
             Configurações
-          </Link> */}
-        </header>
+          </Link>
+        </header> */}
         <label htmlFor="nome">
           Nome
-          <input type="text" data-testid="input-player-name" value={this.state.nome} onChange={this.nomeChange} />
+          <input
+            type="text"
+            data-testid="input-player-name"
+            value={this.state.nome}
+            onChange={this.nomeChange} />
         </label>
         <label htmlFor="email">
           E-mail
-          <input type="email" data-testid="input-gravatar-email" value={this.state.email} onChange={this.emailChange}/>
+          <input type="email"
+            data-testid="input-gravatar-email"
+            value={this.state.email}
+            onChange={this.emailChange} />
         </label>
-        <button data-testid="btn-play" onClick={() => {console.log(this.state)}}>Jogar</button>
+        <button data-testid="btn-play" onClick={ () => { console.log(this.state); } }>
+          Jogar
+        </button>
       </div>
     );
   }
