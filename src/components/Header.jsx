@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {
-    const { nome, hash, placar } = this.props;
+    const { nome, hash } = this.props;
     return (
       <header>
         <img
