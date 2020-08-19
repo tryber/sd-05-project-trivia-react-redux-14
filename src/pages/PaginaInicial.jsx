@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import { handleSubmit } from '../actions';
 
+const CryptoJS = require("crypto-js");
+
 class PaginaInicial extends Component {
   constructor(props) {
     super(props);
-    this.state = { nome: '', email: '' };
+    this.state = { nome: '', email: '', hash: '', };
     this.nomeChange = this.nomeChange.bind(this);
     this.emailChange = this.emailChange.bind(this);
   }
@@ -17,6 +19,8 @@ class PaginaInicial extends Component {
 
   emailChange(event) {
     this.setState({ email: event.target.value });
+    const cryptoMail = CryptoJS.MD5(event.target.value).toString();
+    this.setState({ hash: cryptoMail });
   }
 
   render() {

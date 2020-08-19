@@ -2,9 +2,12 @@ import { LOGIN } from '../actions';
 import { combineReducers } from 'redux';
 
 const INITIAL_STATE = {
-  name: '',
-  email: '',
-  hash: '',
+  login: {
+    nome: '',
+    email: '',
+    hash: '',
+    placar: 0,
+  }
 }
 
 function loginReducer(state = INITIAL_STATE, action) {
@@ -13,7 +16,7 @@ function loginReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         login: {
-          name: action.login.name,
+          nome: action.login.nome,
           email: action.login.email,
           hash: action.login.hash,
         }
