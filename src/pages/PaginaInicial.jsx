@@ -30,7 +30,7 @@ class PaginaInicial extends Component {
   }
 
   render() {
-    const {hClick } = this.props;
+    const { hC } = this.props;
     const { clicked, email, nome } = this.state;
     const e = !email || !nome;
     if (clicked) return <Redirect to="/game" />;
@@ -55,7 +55,7 @@ class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button data-testid="btn-play" disabled={e} onClick={() => {hClick(this.state); this.cR(); }}>
+        <button data-testid="btn-play" disabled={e} onClick={() => { hC(this.state); this.cR(); }}>
           Jogar
         </button>
       </div>
@@ -64,11 +64,11 @@ class PaginaInicial extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  hClick: (login) => dispatch(handleSubmit(login), fetchToken()),
+  hC: (login) => dispatch(handleSubmit(login), fetchToken()),
 });
 
 export default connect(null, mapDispatchToProps)(PaginaInicial);
 
 PaginaInicial.propTypes = {
- hClick: PropTypes.func.isRequired,
+ hC: PropTypes.func.isRequired,
 };
