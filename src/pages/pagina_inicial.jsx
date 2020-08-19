@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
+import { handleSubmit } from '../actions';
 
-export default class PaginaInicial extends Component {
+class PaginaInicial extends Component {
   constructor(props) {
     super(props);
     this.state = { nome: '', email: '' };
@@ -18,6 +20,7 @@ export default class PaginaInicial extends Component {
   }
 
   render() {
+    const { handleSubmit } = this.props;
     return (
       <div>
         {/* <header>
@@ -43,7 +46,7 @@ export default class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button data-testid="btn-play" onClick={() => { console.log(this.state); }}>
+        <button data-testid="btn-play" onClick={() => {handleSubmit(this.state)}}>
           Jogar
         </button>
       </div>
@@ -51,6 +54,8 @@ export default class PaginaInicial extends Component {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//     handleSubmit: (values) => dispatch(filterByNumericValues(values)),
-//   });
+const mapDispatchToProps = (dispatch) => ({
+    handleSubmit: (login) => dispatch(handleSubmit(login)),
+});
+
+export default connect(null, mapDispatchToProps)(PaginaInicial);
