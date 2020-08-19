@@ -70,5 +70,5 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(null, mapDispatchToProps)(PaginaInicial);
 
 PaginaInicial.propTypes = {
- hC: PropTypes.func.isRequired,
+  hC: PropTypes.func.isRequired,
 };
