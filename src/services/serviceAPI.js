@@ -6,7 +6,7 @@ const tokenAPI = () => (
       response
         .json()
         .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
-        //.then((json) => json.token)
+        // .then((json) => json.token)
     ))
 );
 

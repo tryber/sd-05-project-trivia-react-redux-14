@@ -28,7 +28,7 @@ export function fetchToken() {
   return (dispatch) => {
     dispatch(requestAPIdata());
 
-   serviceAPI()
+    serviceAPI()
       .then(
         (data) => dispatch(receiveAPIdataSuccess(data)),
         (error) => dispatch(receiveAPIdataFailure(error)),
