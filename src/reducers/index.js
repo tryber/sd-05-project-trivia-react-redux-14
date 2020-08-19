@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { LOGIN } from '../actions';
+import { LOGIN, REQUEST_API_DATA, RECEIVE_API_DATA_SUCCESS, RECEIVE_API_DATA_FAILURE } from '../actions';
 
 const INITIAL_STATE = {
   login: {
@@ -8,6 +8,8 @@ const INITIAL_STATE = {
     hash: '',
     placar: 0,
   },
+  token: '',
+  isFetching: false,
 };
 
 function loginReducer(state = INITIAL_STATE, action) {
@@ -27,8 +29,33 @@ function loginReducer(state = INITIAL_STATE, action) {
   }
 }
 
+function tokenReducer(state = INITIAL_STATE, action) {
+  switch (action.type) {
+    case REQUEST_API_DATA:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case RECEIVE_API_DATA_SUCCESS:
+      return {
+        ...state,
+        token: action.token,
+        isFetching: false,
+      };
+    case RECEIVE_API_DATA_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        isFetching: false,
+      };
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   loginReducer,
+  tokenReducer,
 });
 
 export default rootReducer;

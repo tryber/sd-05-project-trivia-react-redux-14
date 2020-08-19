@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { handleSubmit } from '../actions';
+import { handleSubmit, fetchToken } from '../actions';
 
 const CryptoJS = require('crypto-js');
 
@@ -63,7 +63,7 @@ class PaginaInicial extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  handleClick: (login) => dispatch(handleSubmit(login)),
+  handleClick: (login) => dispatch(handleSubmit(login), fetchToken()),
 });
 
 export default connect(null, mapDispatchToProps)(PaginaInicial);
