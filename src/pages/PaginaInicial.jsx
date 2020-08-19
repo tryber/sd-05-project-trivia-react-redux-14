@@ -31,7 +31,8 @@ class PaginaInicial extends Component {
 
   render() {
     const { handleClick } = this.props;
-    const { clicked } = this.state;
+    const { clicked, email, nome } = this.state;
+    const e = !email || !nome;
     if (clicked) return <Redirect to="/game" />;
     return (
       <div>
@@ -54,7 +55,7 @@ class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button data-testid="btn-play" onClick={() => { handleClick(this.state); this.cR(); }}>
+        <button data-testid="btn-play" disabled={e} onClick={() => { handleClick(this.state); this.cR(); }}>
           Jogar
         </button>
       </div>

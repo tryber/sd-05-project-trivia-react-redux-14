@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {
     const { nome, hash, placar } = this.props;
     return (
-      <div>
+      <header>
         <img
           data-testid="header-profile-picture"
           src={`https://www.gravatar.com/avatar/${hash}`}
@@ -14,7 +15,8 @@ class Header extends Component {
         />
         <p data-testid="header-player-name">Jogador: {nome}</p>
         <p data-testid="header-score">Score: {placar}</p>
-      </div>
+        <Link to="/">Home</Link>
+      </header>
     );
   }
 }
