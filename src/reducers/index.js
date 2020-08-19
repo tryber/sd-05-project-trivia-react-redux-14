@@ -19,6 +19,7 @@ function loginReducer(state = INITIAL_STATE, action) {
           nome: action.login.nome,
           email: action.login.email,
           hash: action.login.hash,
+          placar: action.login.placar,
         },
       };
     default:
