@@ -1,5 +1,5 @@
-import { LOGIN } from '../actions';
 import { combineReducers } from 'redux';
+import { LOGIN } from '../actions';
 
 const INITIAL_STATE = {
   login: {
@@ -7,11 +7,11 @@ const INITIAL_STATE = {
     email: '',
     hash: '',
     placar: 0,
-  }
-}
+  },
+};
 
 function loginReducer(state = INITIAL_STATE, action) {
-  switch(action.type) {
+  switch (action.type) {
     case LOGIN:
       return {
         ...state,
@@ -19,9 +19,8 @@ function loginReducer(state = INITIAL_STATE, action) {
           nome: action.login.nome,
           email: action.login.email,
           hash: action.login.hash,
-        }
+        },
       };
-  
     default:
       return state;
   }
@@ -29,6 +28,6 @@ function loginReducer(state = INITIAL_STATE, action) {
 
 const rootReducer = combineReducers({
   loginReducer,
-})
+});
 
 export default rootReducer;

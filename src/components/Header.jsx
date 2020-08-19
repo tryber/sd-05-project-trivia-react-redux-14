@@ -7,7 +7,7 @@ class Header extends Component {
     const { nome, hash, placar } = this.props;
     return (
       <div>
-        <img 
+        <img
           data-testid="header-profile-picture"
           src={`https://www.gravatar.com/avatar/${hash}`}
           alt="foto de perfil"
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => ({
   nome: state.loginReducer.login.nome,
   hash: state.loginReducer.login.hash,
   placar: state.loginReducer.login.placar,
-})
+});
 
 export default connect(mapStateToProps)(Header);
 
