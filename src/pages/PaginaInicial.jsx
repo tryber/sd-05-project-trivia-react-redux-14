@@ -12,6 +12,7 @@ class PaginaInicial extends Component {
     this.state = { nome: '', email: '', hash: '', clicked: false };
     this.nomeChange = this.nomeChange.bind(this);
     this.emailChange = this.emailChange.bind(this);
+    this.cR = this.cR.bind(this);
   }
 
   nomeChange(event) {
@@ -24,21 +25,17 @@ class PaginaInicial extends Component {
     this.setState({ hash: cryptoMail });
   }
 
-  clickRedirect() {
+  cR() {
     this.setState({ clicked: true });
   }
 
   render() {
     const { handleClick } = this.props;
     const { clicked } = this.state;
-    if(clicked) return <Redirect to="/game" />;
+    if (clicked) return <Redirect to="/game" />;
     return (
       <div>
-        <header>
-        <Link to="/settings" data-testid="btn-settings">
-            Configurações
-          </Link>
-        </header>
+        <Link to="/settings" data-testid="btn-settings">Configurações</Link>
         <label htmlFor="nome">
           Nome
           <input
@@ -57,7 +54,7 @@ class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button data-testid="btn-play" onClick={() => { handleClick(this.state); this.clickRedirect() }}>
+        <button data-testid="btn-play" onClick={() => { handleClick(this.state); this.cR(); }}>
           Jogar
         </button>
       </div>
