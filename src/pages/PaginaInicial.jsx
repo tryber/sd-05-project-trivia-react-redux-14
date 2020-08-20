@@ -33,9 +33,9 @@ class PaginaInicial extends Component {
   clickAPI() {
     const { hC, chave, questions } = this.props;
     hC(this.state);
-    chave().then(({data}) => {
+    chave().then(({ data }) => {
       questions(data);
-      localStorage.setItem("token", data);
+      localStorage.setItem('token', data);
     });
     this.cR();
   }
@@ -65,12 +65,12 @@ class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button data-testid="btn-play" disabled={e} onClick={ () => this.clickAPI() }>
+        <button data-testid="btn-play" disabled={ e } onClick={ () => this.clickAPI() }>
           Jogar
         </button>
       </div>
     );
-  };
+  }
 }
 
 const mapDispatchToProps = (dispatch) => ({

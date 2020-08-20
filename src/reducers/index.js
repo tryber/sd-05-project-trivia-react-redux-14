@@ -57,15 +57,13 @@ function tokenReducer(state = INITIAL_STATE_TOKEN, action) {
         ...state,
         isFetching: true,
       };
-      
     case RECEIVE_QUESTIONS_FROM_API:
       return {
         ...state,
         questions: action.questions,
         isFetching: false,
-      }
-    default:
-      return state;
+      };
+    default: return state;
   }
 }
 

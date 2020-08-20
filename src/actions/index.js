@@ -33,7 +33,7 @@ const requestQuestions = () => ({
 export const receiveQuestionsFromAPI = (data) => ({
   type: RECEIVE_QUESTIONS_FROM_API,
   questions: data.results,
-})
+});
 
 export function fetchToken() {
   return (dispatch) => {
@@ -53,7 +53,7 @@ export function fetchQuestions(data) {
 
     return questionsAPI(data)
       .then(
-        (data) => dispatch(receiveQuestionsFromAPI(data)),
+        (token) => dispatch(receiveQuestionsFromAPI(token)),
       );
   };
 }
