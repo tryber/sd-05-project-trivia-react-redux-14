@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { handleSubmit, fetchToken } from '../actions';
+import { handleSubmit, fetchToken, fetchQuestions } from '../actions';
 
 const CryptoJS = require('crypto-js');
 
@@ -13,6 +13,7 @@ class PaginaInicial extends Component {
     this.nomeChange = this.nomeChange.bind(this);
     this.emailChange = this.emailChange.bind(this);
     this.cR = this.cR.bind(this);
+    this.clickAPI = this.clickAPI.bind(this);
   }
 
   nomeChange(event) {
@@ -29,8 +30,17 @@ class PaginaInicial extends Component {
     this.setState({ clicked: true });
   }
 
+  clickAPI() {
+    const { hC, chave, questions } = this.props;
+    hC(this.state);
+    chave().then(({data}) => {
+      questions(data);
+      localStorage.setItem("token", data);
+    });
+    this.cR();
+  }
+
   render() {
-    const { hC } = this.props;
     const { clicked, email, nome } = this.state;
     const e = !email || !nome;
     if (clicked) return <Redirect to="/game" />;
@@ -55,20 +65,24 @@ class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button data-testid="btn-play" disabled={e} onClick={() => { hC(this.state); this.cR(); }}>
+        <button data-testid="btn-play" disabled={e} onClick={ () => this.clickAPI() }>
           Jogar
         </button>
       </div>
     );
-  }
+  };
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  hC: (login) => dispatch(handleSubmit(login), fetchToken()),
+  hC: (login) => dispatch(handleSubmit(login)),
+  chave: () => dispatch(fetchToken()),
+  questions: (data) => dispatch(fetchQuestions(data)),
 });
 
 export default connect(null, mapDispatchToProps)(PaginaInicial);
 
 PaginaInicial.propTypes = {
   hC: PropTypes.func.isRequired,
+  chave: PropTypes.func.isRequired,
+  questions: PropTypes.func.isRequired,
 };

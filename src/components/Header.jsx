@@ -15,7 +15,7 @@ class Header extends Component {
         />
         <p data-testid="header-player-name">Jogador: {nome}</p>
         <p data-testid="header-score">Score: 0</p>
-        <Link to="/">Home</Link>
+        <Link data-testid="btn-go-home" to="/">Home</Link>
       </header>
     );
   }
