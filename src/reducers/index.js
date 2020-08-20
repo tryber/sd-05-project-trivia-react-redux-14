@@ -36,10 +36,7 @@ function loginReducer(state = INITIAL_STATE_LOGIN, action) {
 function tokenReducer(state = INITIAL_STATE_TOKEN, action) {
   switch (action.type) {
     case REQUEST_API_DATA:
-      return {
-        ...state,
-        isFetching: true,
-      };
+      return { ...state, isFetching: true };
     case RECEIVE_API_DATA_SUCCESS:
       return {
         ...state,
