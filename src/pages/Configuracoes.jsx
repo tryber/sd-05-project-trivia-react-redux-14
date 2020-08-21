@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class configuracoes extends Component {
+export default class Configuracoes extends Component {
   render() {
     return (
       <header>
