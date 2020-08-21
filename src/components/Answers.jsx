@@ -14,19 +14,19 @@ class Answers extends Component {
 
   // prettier-ignore
   nextQuestion() {
-    const { counter } = this.props
-    this.setState({isClicked: false});
-    counter();
+    const { counterF } = this.props;
+    this.setState({ isClicked: false });
+    counterF();
   }
 
   // prettier-ignore
   clickC() {
-    this.setState({isClicked: true});
+    this.setState({ isClicked: true });
   }
 
   // prettier-ignore
-  clickI () {
-    this.setState({isClicked: true});
+  clickI() {
+    this.setState({ isClicked: true });
   }
 
   render() {
@@ -54,9 +54,7 @@ class Answers extends Component {
                 {respostaI}
               </button>
             ))}
-            {isClicked && (
-              <button onClick={() => this.nextQuestion()}>Next Question</button>
-            )}
+            {isClicked && (<button onClick={() => this.nextQuestion()}>Next Question</button>)}
           </div>
         )}
       </div>
@@ -70,11 +68,13 @@ const mapStatetoProps = (state) => ({
 });
 
 const mapDispatchtoProps = (dispatch) => ({
-  counter: () => dispatch(counter()),
+  counterF: () => dispatch(counter()),
 });
 
 export default connect(mapStatetoProps, mapDispatchtoProps)(Answers);
 
 Answers.propTypes = {
   perguntas: PropTypes.arrayOf(PropTypes.object).isRequired,
+  counterF: PropTypes.func.isRequired,
+  count: PropTypes.number.isRequired,
 };

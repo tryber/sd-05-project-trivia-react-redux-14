@@ -1,5 +1,13 @@
 import { combineReducers } from 'redux';
-import { LOGIN, REQUEST_API_DATA, RECEIVE_API_DATA_SUCCESS, RECEIVE_API_DATA_FAILURE, RECEIVE_QUESTIONS_FROM_API, REQUEST_QUESTIONS, COUNTER } from '../actions';
+import {
+  LOGIN,
+  REQUEST_API_DATA,
+  RECEIVE_API_DATA_SUCCESS,
+  RECEIVE_API_DATA_FAILURE,
+  RECEIVE_QUESTIONS_FROM_API,
+  REQUEST_QUESTIONS,
+  COUNTER,
+} from '../actions';
 
 const INITIAL_STATE_LOGIN = {
   login: {
@@ -22,11 +30,11 @@ function loginReducer(state = INITIAL_STATE_LOGIN, action) {
           placar: action.login.placar,
         },
       };
-      default:
-        return state;
-      }
-    }
-    
+    default:
+      return state;
+  }
+}
+
 const INITIAL_STATE_TOKEN = {
   token: '',
   questions: [],
@@ -60,21 +68,23 @@ function tokenReducer(state = INITIAL_STATE_TOKEN, action) {
         questions: action.questions,
         isFetching: false,
       };
-    default: return state;
+    default:
+      return state;
   }
 }
 
 const INITIAL_STATE_COUNTER = {
   count: 0,
-}
+};
 
 function counterReducer(state = INITIAL_STATE_COUNTER, action) {
   switch (action.type) {
     case COUNTER:
       return { ...state, count: state.count + 1 };
-    default: return state;
+    default:
+      return state;
   }
-}  
+}
 
 const rootReducer = combineReducers({
   loginReducer,

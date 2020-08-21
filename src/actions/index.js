@@ -38,7 +38,7 @@ export const receiveQuestionsFromAPI = (data) => ({
 
 export const counter = () => ({
   type: COUNTER,
-})
+});
 
 export function fetchToken() {
   return (dispatch) => {

@@ -40,4 +40,5 @@ export default connect(mapStatetoProps)(TelaJogo);
 
 TelaJogo.propTypes = {
   perguntas: PropTypes.arrayOf(PropTypes.object).isRequired,
+  count: PropTypes.number.isRequired,
 };
