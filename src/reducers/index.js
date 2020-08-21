@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { LOGIN, REQUEST_API_DATA, RECEIVE_API_DATA_SUCCESS, RECEIVE_API_DATA_FAILURE, RECEIVE_QUESTIONS_FROM_API, REQUEST_QUESTIONS } from '../actions';
+import { LOGIN, REQUEST_API_DATA, RECEIVE_API_DATA_SUCCESS, RECEIVE_API_DATA_FAILURE, RECEIVE_QUESTIONS_FROM_API, REQUEST_QUESTIONS, COUNTER } from '../actions';
 
 const INITIAL_STATE_LOGIN = {
   login: {
@@ -8,12 +8,6 @@ const INITIAL_STATE_LOGIN = {
     hash: '',
     placar: 0,
   },
-};
-
-const INITIAL_STATE_TOKEN = {
-  token: '',
-  questions: [],
-  isFetching: false,
 };
 
 function loginReducer(state = INITIAL_STATE_LOGIN, action) {
@@ -28,10 +22,16 @@ function loginReducer(state = INITIAL_STATE_LOGIN, action) {
           placar: action.login.placar,
         },
       };
-    default:
-      return state;
-  }
-}
+      default:
+        return state;
+      }
+    }
+    
+const INITIAL_STATE_TOKEN = {
+  token: '',
+  questions: [],
+  isFetching: false,
+};
 
 function tokenReducer(state = INITIAL_STATE_TOKEN, action) {
   switch (action.type) {
@@ -64,9 +64,22 @@ function tokenReducer(state = INITIAL_STATE_TOKEN, action) {
   }
 }
 
+const INITIAL_STATE_COUNTER = {
+  count: 0,
+}
+
+function counterReducer(state = INITIAL_STATE_COUNTER, action) {
+  switch (action.type) {
+    case COUNTER:
+      return { ...state, count: state.count + 1 };
+    default: return state;
+  }
+}  
+
 const rootReducer = combineReducers({
   loginReducer,
   tokenReducer,
+  counterReducer,
 });
 
 export default rootReducer;
