@@ -31,10 +31,13 @@ export class TelaJogo extends Component {
             <p data-testid="question-text">
               Question: {perguntas[count].question}
             </p>
+            <button data-testid="correct-answer">{perguntas[count].correct_answer}</button>
+            {perguntas[count].incorrect_answers.map((respostaI, i) => (
+              <button data-testid={`wrong-answer-${i}`}>{respostaI}</button>
+            ))}
             <button onClick={() => this.nextQuestion()}>Next Question</button>
           </div>
         )}
-        {/* { perguntas[0] && <p>Question: {perguntas[0].question}</p> } */}
       </div>
     );
   }
