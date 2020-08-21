@@ -9,11 +9,9 @@ export class TelaJogo extends Component {
     this.state = { count: 0 };
     this.nextQuestion = this.nextQuestion.bind(this);
   }
-
+  // prettier-ignore
   nextQuestion() {
-    this.setState((previousState) => {
-      count: previousState.count + 1;
-    });
+    this.setState((previousState) => ({count: previousState.count + 1}));
     console.log(this.state.count);
   }
 
@@ -52,6 +50,6 @@ const mapStatetoProps = (state) => ({
 
 export default connect(mapStatetoProps)(TelaJogo);
 
-TelaJogo.PropTypes = {
+TelaJogo.propTypes = {
   perguntas: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
