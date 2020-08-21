@@ -22,7 +22,7 @@ export class TelaJogo extends Component {
     return (
       <div>
         <Header />
-        <h1>TELA DE JOGO</h1>
+        <h1>Tela de Jogo</h1>
         {perguntas[count] && (
           <div>
             <p data-testid="question-category">
