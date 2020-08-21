@@ -11,7 +11,7 @@ export class TelaJogo extends Component {
   }
   // prettier-ignore
   nextQuestion() {
-    this.setState((previousState) => ({count: previousState.count + 1}));
+    this.setState((previousState) => ({ count: previousState.count + 1 }));
     console.log(this.state.count);
   }
 
