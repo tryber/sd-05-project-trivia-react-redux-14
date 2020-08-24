@@ -67,13 +67,7 @@ class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button
-          data-testid="btn-play"
-          disabled={e}
-          onClick={() => this.clickAPI()}
-        >
-          Jogar
-        </button>
+        <button data-testid="btn-play" disabled={e} onClick={() => this.clickAPI()}>Jogar</button>
       </div>
     );
   }

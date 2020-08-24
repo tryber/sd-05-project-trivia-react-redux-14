@@ -17,7 +17,7 @@ class Answers extends Component {
     this.clickI = this.clickI.bind(this);
   }
 
-  intervalChange = () => {
+  intervalChange() {
     this.setState({ timer: 30 });
     this.myInterval = setInterval(() => {
       if (this.state.timer === 1) {
@@ -87,9 +87,7 @@ class Answers extends Component {
                 {respostaI}
               </button>
             ))}
-            {isClicked && (
-              <button onClick={() => this.nextQuestion()}>Next Question</button>
-            )}
+            {isClicked && (<button onClick={() => this.nextQuestion()}>Next Question</button>)}
           </div>
         )}
       </div>
