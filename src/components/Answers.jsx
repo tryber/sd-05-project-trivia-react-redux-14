@@ -91,7 +91,7 @@ class Answers extends Component {
     this.setState({
       player: {
         ...this.state.player,
-        score: this.state.player.score + (this.state.timer * dif + 10),
+        score: this.state.player.score + ((this.state.timer * dif) + 10),
         assertions: this.state.player.assertions + 1,
       },
     });
