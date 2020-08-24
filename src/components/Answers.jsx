@@ -9,8 +9,13 @@ class Answers extends Component {
     this.state = {
       isClicked: false,
       isAssertion: false,
-      assertion: 0,
       timer: 30,
+      player: {
+        name: '',
+        assertions: 0,
+        score: 0,
+        gravatarEmail: '',
+      },
     };
     this.nQ = this.nQ.bind(this);
     this.clickC = this.clickC.bind(this);
@@ -36,23 +41,25 @@ class Answers extends Component {
 
   // prettier-ignore
   nQ() {
-    const { counterF } = this.props;
-    this.setState({ isClicked: false });
+    const { counterF, nome, email } = this.props;
+    this.setState({ isClicked: false, player: {...this.state.player, name: nome, gravatarEmail: email } });
     counterF();
     clearInterval(this.myInterval);
     this.intervalChange();
+    localStorage.setItem('state', this.state.player);
+    console.log(this.state.player)
   }
 
   // prettier-ignore
   clickC() {
-    this.setState({ isClicked: true, assertion: this.state.assertion + 1 });
-    // console.log(this.state.assertion)
+    this.setState({ isClicked: true });
+    this.points();
+    console.log(this.state.player.assertions)
   }
 
   // prettier-ignore
   clickI() {
     this.setState({ isClicked: true });
-    // console.log(this.state.assertion)
   }
 
   timeOut() {
@@ -61,12 +68,34 @@ class Answers extends Component {
     }
   }
 
+  points() {
+    const { perguntas, count } = this.props;
+    let dif = 0;
+    switch(perguntas[count].difficulty) {
+      case "hard":
+        dif = 3;
+        break;
+      case "medium":
+        dif = 2;
+        break;
+      case "easy":
+        dif = 1;
+        break;
+      default:
+        dif = 0;
+        break;
+    };
+    this.setState({ player: {...this.state.player, score: this.state.player.score + ((this.state.timer * dif) + 10), assertions: this.state.player.assertions + 1 } });
+    // console.log(dif);
+  };
+
   render() {
     const { perguntas, count } = this.props;
     const { isClicked } = this.state;
     return (
       <div>
         <h2>{this.state.timer}</h2>
+        <h3>{this.state.player.score}</h3>
         {perguntas[count] && (
           <div>
             <button
@@ -98,6 +127,8 @@ class Answers extends Component {
 const mapStatetoProps = (state) => ({
   perguntas: state.tokenReducer.questions,
   count: state.counterReducer.count,
+  nome: state.loginReducer.login.nome,
+  email: state.loginReducer.login.email,
 });
 
 const mapDispatchtoProps = (dispatch) => ({
