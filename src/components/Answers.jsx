@@ -12,7 +12,7 @@ class Answers extends Component {
       assertion: 0,
       timer: 30,
     };
-    this.nextQuestion = this.nextQuestion.bind(this);
+    this.nQ = this.nQ.bind(this);
     this.clickC = this.clickC.bind(this);
     this.clickI = this.clickI.bind(this);
   }
@@ -35,7 +35,7 @@ class Answers extends Component {
   }
 
   // prettier-ignore
-  nextQuestion() {
+  nQ() {
     const { counterF } = this.props;
     this.setState({ isClicked: false });
     counterF();
@@ -87,7 +87,7 @@ class Answers extends Component {
                 {respostaI}
               </button>
             ))}
-            {isClicked && (<button data-testid="btn-next" onClick={() => this.nextQuestion()}>Next Question</button>)}
+            {isClicked && (<button data-testid="btn-next" onClick={() => this.nQ()}>Next</button>)}
           </div>
         )}
       </div>
