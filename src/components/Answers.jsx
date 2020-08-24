@@ -16,7 +16,7 @@ class Answers extends Component {
     this.clickC = this.clickC.bind(this);
     this.clickI = this.clickI.bind(this);
   }
-  
+
   componentDidMount() {
     this.intervalChange();
   }
@@ -60,7 +60,6 @@ class Answers extends Component {
       this.setState({ isClicked: true });
     }
   }
-  
 
   render() {
     const { perguntas, count } = this.props;
