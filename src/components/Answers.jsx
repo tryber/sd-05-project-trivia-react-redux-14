@@ -42,19 +42,22 @@ class Answers extends Component {
   // prettier-ignore
   nQ() {
     const { counterF, nome, email } = this.props;
-    this.setState({ isClicked: false, player: {...this.state.player, name: nome, gravatarEmail: email } });
+    this.setState({
+      isClicked: false,
+      player: { ...this.state.player, name: nome, gravatarEmail: email },
+    });
     counterF();
     clearInterval(this.myInterval);
     this.intervalChange();
     localStorage.setItem('state', this.state.player);
-    console.log(this.state.player)
+    // console.log(this.state.player);
   }
 
   // prettier-ignore
   clickC() {
     this.setState({ isClicked: true });
     this.points();
-    console.log(this.state.player.assertions)
+    // console.log(this.state.player.assertions);
   }
 
   // prettier-ignore
@@ -71,24 +74,31 @@ class Answers extends Component {
   points() {
     const { perguntas, count } = this.props;
     let dif = 0;
-    switch(perguntas[count].difficulty) {
-      case "hard":
+    switch (perguntas[count].difficulty) {
+      case 'hard':
         dif = 3;
         break;
-      case "medium":
+      case 'medium':
         dif = 2;
         break;
-      case "easy":
+      case 'easy':
         dif = 1;
         break;
       default:
         dif = 0;
         break;
-    };
-    this.setState({ player: {...this.state.player, score: this.state.player.score + ((this.state.timer * dif) + 10), assertions: this.state.player.assertions + 1 } });
+    }
+    this.setState({
+      player: {
+        ...this.state.player,
+        score: this.state.player.score + (this.state.timer * dif + 10),
+        assertions: this.state.player.assertions + 1,
+      },
+    });
     // console.log(dif);
-  };
+  }
 
+  // prettier-ignore
   render() {
     const { perguntas, count } = this.props;
     const { isClicked } = this.state;
@@ -108,10 +118,8 @@ class Answers extends Component {
             </button>
             {perguntas[count].incorrect_answers.map((respostaI, i) => (
               <button
-                data-testid={`wrong-answer-${i}`}
-                onClick={() => this.clickI()}
-                disabled={isClicked}
-                className={isClicked ? 'red-border' : null}
+                data-testid={`wrong-answer-${i}`} onClick={() => this.clickI()}
+                disabled={isClicked} className={isClicked ? 'red-border' : null}
               >
                 {respostaI}
               </button>
@@ -141,4 +149,6 @@ Answers.propTypes = {
   perguntas: PropTypes.arrayOf(PropTypes.object).isRequired,
   counterF: PropTypes.func.isRequired,
   count: PropTypes.number.isRequired,
+  nome: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 };
