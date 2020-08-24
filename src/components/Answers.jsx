@@ -16,6 +16,10 @@ class Answers extends Component {
     this.clickC = this.clickC.bind(this);
     this.clickI = this.clickI.bind(this);
   }
+  
+  componentDidMount() {
+    this.intervalChange();
+  }
 
   intervalChange() {
     this.setState({ timer: 30 });
@@ -28,7 +32,7 @@ class Answers extends Component {
       }));
       this.timeOut();
     }, 1000);
-  };
+  }
 
   // prettier-ignore
   nextQuestion() {
@@ -42,13 +46,13 @@ class Answers extends Component {
   // prettier-ignore
   clickC() {
     this.setState({ isClicked: true, assertion: this.state.assertion + 1 });
-    console.log(this.state.assertion)
+    // console.log(this.state.assertion)
   }
 
   // prettier-ignore
   clickI() {
     this.setState({ isClicked: true });
-    console.log(this.state.assertion)
+    // console.log(this.state.assertion)
   }
 
   timeOut() {
@@ -56,10 +60,7 @@ class Answers extends Component {
       this.setState({ isClicked: true });
     }
   }
-
-  componentDidMount() {
-    this.intervalChange();
-  }
+  
 
   render() {
     const { perguntas, count } = this.props;
