@@ -46,7 +46,9 @@ class PaginaInicial extends Component {
     if (clicked) return <Redirect to="/game" />;
     return (
       <div>
-        <Link to="/settings" data-testid="btn-settings">Configurações</Link>
+        <Link to="/settings" data-testid="btn-settings">
+          Configurações
+        </Link>
         <label htmlFor="nome">
           Nome
           <input
@@ -65,7 +67,11 @@ class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button data-testid="btn-play" disabled={e} onClick={() => this.clickAPI()}>
+        <button
+          data-testid="btn-play"
+          disabled={e}
+          onClick={() => this.clickAPI()}
+        >
           Jogar
         </button>
       </div>

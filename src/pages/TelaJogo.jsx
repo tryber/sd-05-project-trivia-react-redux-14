@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Answers from '../components/Answers';
 
 class TelaJogo extends Component {
+
   render() {
     const { perguntas, count } = this.props;
     if (count > 4) {

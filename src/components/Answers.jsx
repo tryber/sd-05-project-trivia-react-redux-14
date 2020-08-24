@@ -6,27 +6,59 @@ import { counter } from '../actions';
 class Answers extends Component {
   constructor(props) {
     super(props);
-    this.state = { isClicked: false };
+    this.state = {
+      isClicked: false,
+      isAssertion: false,
+      assertion: 0,
+      timer: 30,
+    };
     this.nextQuestion = this.nextQuestion.bind(this);
     this.clickC = this.clickC.bind(this);
     this.clickI = this.clickI.bind(this);
   }
+
+  intervalChange = () => {
+    this.setState({ timer: 30 });
+    this.myInterval = setInterval(() => {
+      if (this.state.timer === 1) {
+        clearInterval(this.myInterval);
+      }
+      this.setState((previousState) => ({
+        timer: previousState.timer - 1,
+      }));
+      this.timeOut();
+    }, 1000);
+  };
 
   // prettier-ignore
   nextQuestion() {
     const { counterF } = this.props;
     this.setState({ isClicked: false });
     counterF();
+    clearInterval(this.myInterval);
+    this.intervalChange();
   }
 
   // prettier-ignore
   clickC() {
-    this.setState({ isClicked: true });
+    this.setState({ isClicked: true, assertion: this.state.assertion + 1 });
+    console.log(this.state.assertion)
   }
 
   // prettier-ignore
   clickI() {
     this.setState({ isClicked: true });
+    console.log(this.state.assertion)
+  }
+
+  timeOut() {
+    if (this.state.timer === 0) {
+      this.setState({ isClicked: true });
+    }
+  }
+
+  componentDidMount() {
+    this.intervalChange();
   }
 
   render() {
@@ -34,6 +66,7 @@ class Answers extends Component {
     const { isClicked } = this.state;
     return (
       <div>
+        <h2>{this.state.timer}</h2>
         {perguntas[count] && (
           <div>
             <button
@@ -54,7 +87,9 @@ class Answers extends Component {
                 {respostaI}
               </button>
             ))}
-            {isClicked && (<button onClick={() => this.nextQuestion()}>Next Question</button>)}
+            {isClicked && (
+              <button onClick={() => this.nextQuestion()}>Next Question</button>
+            )}
           </div>
         )}
       </div>
