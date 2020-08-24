@@ -87,7 +87,7 @@ class Answers extends Component {
                 {respostaI}
               </button>
             ))}
-            {isClicked && (<button onClick={() => this.nextQuestion()}>Next Question</button>)}
+            {isClicked && (<button data-testid="btn-next" onClick={() => this.nextQuestion()}>Next Question</button>)}
           </div>
         )}
       </div>
