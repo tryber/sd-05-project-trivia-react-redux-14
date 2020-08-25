@@ -7,6 +7,12 @@ export const RECEIVE_API_DATA_FAILURE = 'RECEIVE_API_DATA_FAILURE';
 export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS';
 export const RECEIVE_QUESTIONS_FROM_API = 'RECEIVE_QUESTIONS_FROM_API';
 export const COUNTER = 'COUNTER';
+export const DADOS = 'DADOS';
+
+export const dados = (player) => ({
+  type: DADOS,
+  player,
+})
 
 export const handleSubmit = (login) => ({
   type: LOGIN,

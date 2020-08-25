@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { counter } from '../actions';
+import { counter, dados } from '../actions';
 
 class Answers extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class Answers extends Component {
 
   // prettier-ignore
   nQ() {
-    const { counterF, nome, email } = this.props;
+    const { counterF, nome, email, playerR } = this.props;
     this.setState({
       isClicked: false,
       player: { ...this.state.player, name: nome, gravatarEmail: email },
@@ -50,6 +50,7 @@ class Answers extends Component {
     clearInterval(this.myInterval);
     this.intervalChange();
     localStorage.setItem('state', this.state.player);
+    playerR(this.state.player);
     // console.log(this.state.player);
   }
 
@@ -105,7 +106,6 @@ class Answers extends Component {
     return (
       <div>
         <h2>{this.state.timer}</h2>
-        <h3>{this.state.player.score}</h3>
         {perguntas[count] && (
           <div>
             <button
@@ -141,6 +141,7 @@ const mapStatetoProps = (state) => ({
 
 const mapDispatchtoProps = (dispatch) => ({
   counterF: () => dispatch(counter()),
+  playerR: (player) => dispatch(dados(player)),
 });
 
 export default connect(mapStatetoProps, mapDispatchtoProps)(Answers);
