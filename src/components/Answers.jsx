@@ -27,12 +27,12 @@ class Answers extends Component {
     this.intervalChange();
   }
 
-  componentDidUpdate() {
-    const { playerR } = this.props;
-    const info = { player: this.state.player };
-    playerR(this.state.player);
-    localStorage.setItem('state', JSON.stringify(info));
-  }
+  // componentDidUpdate() {
+  //  const { playerR } = this.props;
+  //  const info = { player: this.state.player };
+  //  playerR(this.state.player);
+  //  localStorage.setItem('state', JSON.stringify(info));
+  // }
 
   intervalChange() {
     this.setState({ timer: 30 });
@@ -65,14 +65,22 @@ class Answers extends Component {
 
   // prettier-ignore
   clickC() {
+    const { playerR } = this.props;
     this.setState({ isClicked: true });
     this.points();
+    const info = { player: this.state.player };
+    playerR(this.state.player);
+    localStorage.setItem('state', JSON.stringify(info));
     // console.log(this.state.player.assertions);
   }
 
   // prettier-ignore
   clickI() {
+    const { playerR } = this.props;
     this.setState({ isClicked: true });
+    const info = { player: this.state.player };
+    playerR(this.state.player);
+    localStorage.setItem('state', JSON.stringify(info));
   }
 
   timeOut() {
