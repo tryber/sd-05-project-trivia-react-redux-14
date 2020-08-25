@@ -14,18 +14,18 @@ export default class Ranking extends Component {
           </Link>
           <h1 data-testid="ranking-title">RANKING</h1>
         </header>
-        <div>
-          {rankOrder.map((player, index) => ({
+        <section>
+          {rankOrder.map((player, index) => {
             return (
               <div>
                 <img src={player.picture} alt={player.name} />
                 <p data-testid={`player-name-${index}`}>{player.name}</p>
                 <p data-testid={`player-score-${index}`}>{player.score}</p>
               </div>
-           );
-          }))
+            );
+          })
           }
-        </div>
+        </section>
       </div>
     );
   }
