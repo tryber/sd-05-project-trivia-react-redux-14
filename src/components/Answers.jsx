@@ -21,13 +21,13 @@ class Answers extends Component {
     this.clickC = this.clickC.bind(this);
     this.clickI = this.clickI.bind(this);
   }
-  
+
   componentDidMount() {
     this.intervalChange();
   }
 
   componentDidUpdate() {
-    const {playerR} = this.props;
+    const { playerR } = this.props;
     playerR(this.state.player);
   }
 
@@ -61,10 +61,9 @@ class Answers extends Component {
     localStorage.setItem('state', this.state.player);
     // console.log(this.state.player);
   }
-  
+
   // prettier-ignore
   clickC() {
-    const { player } = this.state;
     this.setState({ isClicked: true });
     this.points();
     // console.log(this.state.player.assertions);
