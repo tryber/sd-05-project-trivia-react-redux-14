@@ -6,14 +6,14 @@ export default class Ranking extends Component {
   render() {
     const rankList = JSON.parse(localStorage.getItem('ranking'));
     const rankOrder = rankList.sort((a, b) => b.score - a.score);
-    const Mapa = rankOrder.map((player, index) => {
-      return(
-      <div key={player.name}>
-        <img src={player.picture} alt={player.name} />
-        <p data-testid={`player-name-${index}`}>{player.name}</p>
-        <p data-testid={`player-score-${index}`}>{player.score}</p>
-      </div>
-    )});
+    const Mapa = rankOrder.map((jogador, index) => {
+      return (
+        <div key={jogador.name}>
+          <img src={jogador.picture} alt={jogador.name} />
+          <p data-testid={`player-name-${index}`}>{jogador.name}</p>
+          <p data-testid={`player-score-${index}`}>{jogador.score}</p>
+        </div>);
+    });
     return (
       <div>
         <header>
@@ -23,9 +23,7 @@ export default class Ranking extends Component {
           <h1 data-testid="ranking-title">RANKING</h1>
         </header>
         <section>
-          { 
           <div>{Mapa}</div>
-          }
         </section>
       </div>
     );
