@@ -160,8 +160,6 @@ Answers.propTypes = {
   perguntas: PropTypes.arrayOf(PropTypes.object).isRequired,
   counterF: PropTypes.func.isRequired,
   count: PropTypes.number.isRequired,
-  nome: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
   playerR: PropTypes.shape({
     scoreR: PropTypes.number,
     assertionsR: PropTypes.number,

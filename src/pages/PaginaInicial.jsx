@@ -26,7 +26,7 @@ class PaginaInicial extends Component {
           score: 0,
           gravatarEmail: '',
         },
-      })
+      }),
     );
   }
 
