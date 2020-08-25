@@ -21,9 +21,14 @@ class Answers extends Component {
     this.clickC = this.clickC.bind(this);
     this.clickI = this.clickI.bind(this);
   }
-
+  
   componentDidMount() {
     this.intervalChange();
+  }
+
+  componentDidUpdate() {
+    const {playerR} = this.props;
+    playerR(this.state.player);
   }
 
   intervalChange() {
@@ -35,6 +40,9 @@ class Answers extends Component {
       this.setState((previousState) => ({
         timer: previousState.timer - 1,
       }));
+      if (this.state.isClicked) {
+        clearInterval(this.myInterval);
+      }
       this.timeOut();
     }, 1000);
   }
@@ -49,13 +57,14 @@ class Answers extends Component {
     counterF();
     clearInterval(this.myInterval);
     this.intervalChange();
-    localStorage.setItem('state', this.state.player);
     playerR(this.state.player);
+    localStorage.setItem('state', this.state.player);
     // console.log(this.state.player);
   }
-
+  
   // prettier-ignore
   clickC() {
+    const { player } = this.state;
     this.setState({ isClicked: true });
     this.points();
     // console.log(this.state.player.assertions);
@@ -97,7 +106,7 @@ class Answers extends Component {
         assertions: this.state.player.assertions + 1,
       },
     });
-    // console.log(dif);
+    // playerR(this.state.player);
   }
 
   // prettier-ignore
