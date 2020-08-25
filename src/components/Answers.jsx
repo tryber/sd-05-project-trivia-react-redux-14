@@ -23,7 +23,6 @@ class Answers extends Component {
   }
 
   componentDidMount() {
-    const { nome, email } = this.props;
     // this.setState({ player: { ...this.state.player, name: nome, gravatarEmail: email } });
     this.intervalChange();
   }
