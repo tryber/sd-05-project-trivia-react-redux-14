@@ -72,6 +72,7 @@ class Answers extends Component {
     }
   }
 
+  // prettier-ignore
   points() {
     const { perguntas, count } = this.props;
     let dif = 0;
@@ -92,7 +93,7 @@ class Answers extends Component {
     this.setState({
       player: {
         ...this.state.player,
-        score: this.state.player.score + (this.state.timer * dif + 10),
+        score: this.state.player.score + ((this.state.timer * dif) + 10),
         assertions: this.state.player.assertions + 1,
       },
     });
