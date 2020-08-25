@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import { zCounter, clearLog, zeroDados } from '../actions';
 // import Header from '../components/Header';
 
 class Feedback extends Component {
@@ -12,9 +13,12 @@ class Feedback extends Component {
 
   componentDidMount() {
     this.text();
+    const oldRanking = JSON.parse(localStorage.getItem('ranking'));
     const { nome, hash, placar } = this.props;
     const newRanking = { name: nome, score: placar, picture: `https://www.gravatar.com/avatar/${hash}` };
-    localStorage.setItem('ranking', JSON.stringify(newRanking));
+    oldRanking 
+    ? localStorage.setItem('ranking', JSON.stringify([...oldRanking, newRanking]))
+    : localStorage.setItem('ranking', JSON.stringify([newRanking]))
   }
 
 // ranking
@@ -28,6 +32,14 @@ class Feedback extends Component {
       return this.setState({ message: 'Mandou bem!' });
     }
     return this.setState({ message: 'Podia ser melhor...' });
+  }
+
+  clearStore(){
+    const { zeroCount, clearLogin, clearPlacar } = this.props;
+    zeroCount();
+    clearLogin();
+    clearPlacar();
+
   }
 
   render() {
@@ -46,10 +58,10 @@ class Feedback extends Component {
         <p data-testid="header-player-name">Jogador: {nome}</p>
         <p data-testid="feedback-total-score">{placar}</p>
         <p data-testid="feedback-total-question">{acertos}</p>
-        <Link data-testid="btn-play-again" to="/">
+        <Link data-testid="btn-play-again" to="/" onClick={() => this.clearStore()}>
           Home
         </Link>
-        <Link data-testid="btn-ranking" to="/ranking">
+        <Link data-testid="btn-ranking" to="/ranking" onClick={() => this.clearStore()}>
           Ranking
         </Link>
         <h2 data-testid="feedback-text">{this.state.message}</h2>
@@ -65,7 +77,14 @@ const mapStateToProps = (state) => ({
   acertos: state.placarReducer.assertionsR,
 });
 
-export default connect(mapStateToProps)(Feedback);
+const mapDispatchtoProps = (dispatch) => ({
+  zeroCount: () => dispatch(zCounter()),
+  clearLogin: () => dispatch(clearLog()),
+  clearPlacar: () => dispatch(zeroDados()),
+  // playerR: (player) => dispatch(dados(player)),
+});
+
+export default connect(mapStateToProps, mapDispatchtoProps)(Feedback);
 
 Feedback.propTypes = {
   nome: PropTypes.string.isRequired,
