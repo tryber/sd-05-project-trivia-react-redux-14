@@ -16,6 +16,15 @@ class PaginaInicial extends Component {
     this.clickAPI = this.clickAPI.bind(this);
   }
 
+  componentDidMount() {
+    localStorage.setItem('state', JSON.stringify({player: {
+      name: '',
+      assertions: 0,
+      score: 0,
+      gravatarEmail: '',
+    }},));
+  }
+
   nomeChange(event) {
     this.setState({ nome: event.target.value });
   }

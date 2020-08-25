@@ -33,8 +33,8 @@ class Feedback extends Component {
           alt="foto de perfil"
         />
         <p data-testid="header-player-name">Jogador: {nome}</p>
-        <p data-testid="feedback-total-score">Score: {placar}</p>
-        <p data-testid="feedback-total-question">Acertos: {acertos}</p>
+        <p data-testid="feedback-total-score">{placar}</p>
+        <p data-testid="feedback-total-question">{acertos}</p>
         <Link data-testid="btn-play-again" to="/">
           Home
         </Link>
