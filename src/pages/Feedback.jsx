@@ -25,7 +25,7 @@ class Feedback extends Component {
   render() {
     const { nome, hash, placar, acertos } = this.props;
     return (
-      <header>
+      <header data-testid="header-score">
         <h1>FEEDBACK</h1>
         <img
           data-testid="header-profile-picture"
