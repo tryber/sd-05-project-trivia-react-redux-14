@@ -16,9 +16,10 @@ class Feedback extends Component {
     const oldRanking = JSON.parse(localStorage.getItem('ranking'));
     const { nome, hash, placar } = this.props;
     const newRanking = { name: nome, score: placar, picture: `https://www.gravatar.com/avatar/${hash}` };
-    oldRanking
-    ? localStorage.setItem('ranking', JSON.stringify([...oldRanking, newRanking]))
-    : localStorage.setItem('ranking', JSON.stringify([newRanking]));
+    if(oldRanking) {
+      return localStorage.setItem('ranking', JSON.stringify([...oldRanking, newRanking]))
+    };
+    return localStorage.setItem('ranking', JSON.stringify([newRanking]));
   }
 
 // ranking
