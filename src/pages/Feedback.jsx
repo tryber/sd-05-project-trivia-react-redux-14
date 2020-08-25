@@ -13,7 +13,7 @@ class Feedback extends Component {
   componentDidMount() {
     this.text();
     const { nome, hash, placar } = this.props;
-    const newRanking =  {name: nome, score: placar, picture: `https://www.gravatar.com/avatar/${hash}`}
+    const newRanking = { name: nome, score: placar, picture: `https://www.gravatar.com/avatar/${hash}` };
     localStorage.setItem('ranking', JSON.stringify(newRanking));
   }
 
