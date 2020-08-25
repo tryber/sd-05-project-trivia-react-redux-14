@@ -16,9 +16,9 @@ class Feedback extends Component {
     const oldRanking = JSON.parse(localStorage.getItem('ranking'));
     const { nome, hash, placar } = this.props;
     const newRanking = { name: nome, score: placar, picture: `https://www.gravatar.com/avatar/${hash}` };
-    oldRanking 
+    oldRanking
     ? localStorage.setItem('ranking', JSON.stringify([...oldRanking, newRanking]))
-    : localStorage.setItem('ranking', JSON.stringify([newRanking]))
+    : localStorage.setItem('ranking', JSON.stringify([newRanking]));
   }
 
 // ranking
@@ -34,12 +34,11 @@ class Feedback extends Component {
     return this.setState({ message: 'Podia ser melhor...' });
   }
 
-  clearStore(){
+  clearStore() {
     const { zeroCount, clearLogin, clearPlacar } = this.props;
     zeroCount();
     clearLogin();
     clearPlacar();
-
   }
 
   render() {
@@ -91,4 +90,7 @@ Feedback.propTypes = {
   hash: PropTypes.string.isRequired,
   placar: PropTypes.number.isRequired,
   acertos: PropTypes.number.isRequired,
+  zeroCount: PropTypes.func.isRequired,
+  clearLogin: PropTypes.func.isRequired,
+  clearPlacar: PropTypes.func.isRequired,
 };

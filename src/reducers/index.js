@@ -43,7 +43,7 @@ function loginReducer(state = INITIAL_STATE_LOGIN, action) {
           hash: '',
           placar: '',
         },
-      }
+      };
     default:
       return state;
   }
@@ -120,7 +120,7 @@ function counterReducer(state = INITIAL_STATE_COUNTER, action) {
     case COUNTER:
       return { ...state, count: state.count + 1 };
     case ZEROU:
-      return { ...state, count: 0};
+      return { ...state, count: 0 };
     default:
       return state;
   }

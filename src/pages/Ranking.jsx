@@ -15,13 +15,13 @@ export default class Ranking extends Component {
           <h1 data-testid="ranking-title">RANKING</h1>
         </header>
         {rankOrder.map((player, index) => {
-          return(
-          <div>
-            <p data-testid={`player-name-${index}`}>{player.name}</p>
-            <p data-testid={`player-score-${index}`}>{player.score}</p>
-            <img src={player.picture} alt={player.name} />
-          </div>
-          )
+          return (
+            <div>
+              <p data-testid={`player-name-${index}`}>{player.name}</p>
+              <p data-testid={`player-score-${index}`}>{player.score}</p>
+              <img src={player.picture} alt={player.name} />
+            </div>
+          );
         })}
       </div>
     );
