@@ -27,7 +27,7 @@ class Answers extends Component {
     this.intervalChange();
     this.setLocalstorage();
   }
-  
+
   setLocalstorage() {
     const { nome, email } = this.props;
     this.setState({ player: {
@@ -38,10 +38,10 @@ class Answers extends Component {
     } });
   }
 
-  componentWillUpdate() {
+// componentWillUpdate() {
     // const { playerR } = this.props;
     // playerR(this.state.player);
-  }
+ //  }
 
   intervalChange() {
     this.setState({ timer: 30 });
