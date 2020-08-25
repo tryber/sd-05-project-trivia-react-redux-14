@@ -17,12 +17,17 @@ class PaginaInicial extends Component {
   }
 
   componentDidMount() {
-    localStorage.setItem('state', JSON.stringify({player: {
-      name: '',
-      assertions: 0,
-      score: 0,
-      gravatarEmail: '',
-    }},));
+    localStorage.setItem(
+      'state',
+      JSON.stringify({
+        player: {
+          name: '',
+          assertions: 0,
+          score: 0,
+          gravatarEmail: '',
+        },
+      }),
+    );
   }
 
   nomeChange(event) {
@@ -76,7 +81,13 @@ class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button data-testid="btn-play" disabled={e} onClick={() => this.clickAPI()}>Jogar</button>
+        <button
+          data-testid="btn-play"
+          disabled={e}
+          onClick={() => this.clickAPI()}
+        >
+          Jogar
+        </button>
       </div>
     );
   }

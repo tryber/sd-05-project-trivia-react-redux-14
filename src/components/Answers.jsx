@@ -21,20 +21,20 @@ class Answers extends Component {
     this.clickC = this.clickC.bind(this);
     this.clickI = this.clickI.bind(this);
   }
-  
+
   componentDidMount() {
     const { nome, email } = this.props;
-    this.setState({ player: { ...this.state.player, name: nome, gravatarEmail: email } });
+    // this.setState({ player: { ...this.state.player, name: nome, gravatarEmail: email } });
     this.intervalChange();
   }
-  
+
   componentDidUpdate() {
     const { playerR } = this.props;
-    const info = { player: this.state.player }
+    const info = { player: this.state.player };
     playerR(this.state.player);
     localStorage.setItem('state', JSON.stringify(info));
   }
-  
+
   intervalChange() {
     this.setState({ timer: 30 });
     this.myInterval = setInterval(() => {
@@ -50,7 +50,7 @@ class Answers extends Component {
       this.timeOut();
     }, 1000);
   }
-  
+
   // prettier-ignore
   nQ() {
     const { counterF, playerR } = this.props;
