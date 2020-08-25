@@ -15,8 +15,7 @@ export default class Ranking extends Component {
           <h1 data-testid="ranking-title">RANKING</h1>
         </header>
         <div>
-          {rankOrder.map((player, index) => {
-            return (
+          {rankOrder.map((player, index) => { return (
               <div>
                 <p data-testid={`player-name-${index}`}>{player.name}</p>
                 <p data-testid={`player-score-${index}`}>{player.score}</p>
