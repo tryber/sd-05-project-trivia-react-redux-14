@@ -12,7 +12,7 @@ export const DADOS = 'DADOS';
 export const dados = (player) => ({
   type: DADOS,
   player,
-})
+});
 
 export const handleSubmit = (login) => ({
   type: LOGIN,

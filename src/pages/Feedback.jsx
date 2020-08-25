@@ -15,7 +15,7 @@ class Feedback extends Component {
 
   text() {
     const { acertos } = this.props;
-    acertos >= 3
+    (acertos >= 3)
       ? this.setState({ message: 'Mandou bem!' })
       : this.setState({ message: 'Podia ser melhor...' });
   }
@@ -53,3 +53,10 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Feedback);
+
+Feedback.propTypes = {
+  nome: PropTypes.string.isRequired,
+  hash: PropTypes.string.isRequired,
+  placar: PropTypes.number.isRequired,
+  acertos: PropTypes.number.isRequired,
+};

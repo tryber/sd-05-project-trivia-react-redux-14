@@ -152,4 +152,5 @@ Answers.propTypes = {
   count: PropTypes.number.isRequired,
   nome: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  playerR: PropTypes.object.isRequired,
 };
