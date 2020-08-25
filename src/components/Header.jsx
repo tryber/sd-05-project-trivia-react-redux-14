@@ -14,7 +14,7 @@ class Header extends Component {
           alt="foto de perfil"
         />
         <p data-testid="header-player-name">Jogador: {nome}</p>
-        <p data-testid="header-score">Score: {placar}</p>
+        <p data-testid="header-score">{placar}</p>
         <Link data-testid="btn-go-home" to="/">Home</Link>
       </header>
     );
