@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 // import Header from '../components/Header';
 
 class Feedback extends Component {
@@ -15,9 +16,10 @@ class Feedback extends Component {
 
   text() {
     const { acertos } = this.props;
-    (acertos >= 3)
-      ? this.setState({ message: 'Mandou bem!' })
-      : this.setState({ message: 'Podia ser melhor...' });
+    if (acertos >= 3) {
+      return this.setState({ message: 'Mandou bem!' });
+    }
+    return this.setState({ message: 'Podia ser melhor...' });
   }
 
   render() {

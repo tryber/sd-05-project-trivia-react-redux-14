@@ -92,7 +92,7 @@ class Answers extends Component {
     this.setState({
       player: {
         ...this.state.player,
-        score: this.state.player.score + ((this.state.timer * dif) + 10),
+        score: this.state.player.score + (this.state.timer * dif + 10),
         assertions: this.state.player.assertions + 1,
       },
     });
@@ -152,5 +152,8 @@ Answers.propTypes = {
   count: PropTypes.number.isRequired,
   nome: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  playerR: PropTypes.object.isRequired,
+  playerR: PropTypes.shape({
+    scoreR: PropTypes.number,
+    assertionsR: PropTypes.number,
+  }).isRequired,
 };
