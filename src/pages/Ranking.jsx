@@ -5,7 +5,7 @@ export default class Ranking extends Component {
   render() {
     return (
       <header>
-        <h1>RANKING</h1>
+        <h1 data-testid="ranking-title">RANKING</h1>
         <Header />
       </header>
     );

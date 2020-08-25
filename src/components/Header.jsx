@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {
-    const { nome, hash } = this.props;
+    const { nome, hash, placar } = this.props;
     return (
       <header>
         <img
@@ -14,7 +14,7 @@ class Header extends Component {
           alt="foto de perfil"
         />
         <p data-testid="header-player-name">Jogador: {nome}</p>
-        <p data-testid="header-score">Score: 0</p>
+        <p data-testid="header-score">{placar}</p>
         <Link data-testid="btn-go-home" to="/">Home</Link>
       </header>
     );
@@ -24,7 +24,7 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
   nome: state.loginReducer.login.nome,
   hash: state.loginReducer.login.hash,
-  placar: state.loginReducer.login.placar,
+  placar: state.placarReducer.scoreR,
 });
 
 export default connect(mapStateToProps)(Header);
@@ -32,5 +32,5 @@ export default connect(mapStateToProps)(Header);
 Header.propTypes = {
   nome: PropTypes.string.isRequired,
   hash: PropTypes.string.isRequired,
-  // placar: PropTypes.number.isRequired,
+  placar: PropTypes.number.isRequired,
 };

@@ -7,6 +7,7 @@ import {
   RECEIVE_QUESTIONS_FROM_API,
   REQUEST_QUESTIONS,
   COUNTER,
+  DADOS,
 } from '../actions';
 
 const INITIAL_STATE_LOGIN = {
@@ -29,6 +30,24 @@ function loginReducer(state = INITIAL_STATE_LOGIN, action) {
           hash: action.login.hash,
           placar: action.login.placar,
         },
+      };
+    default:
+      return state;
+  }
+}
+
+const INITIAL_STATE_PLACAR = {
+  scoreR: 0,
+  assertionsR: 0,
+};
+
+function placarReducer(state = INITIAL_STATE_PLACAR, action) {
+  switch (action.type) {
+    case DADOS:
+      return {
+        ...state,
+        scoreR: action.player.score,
+        assertionsR: action.player.assertions,
       };
     default:
       return state;
@@ -90,6 +109,7 @@ const rootReducer = combineReducers({
   loginReducer,
   tokenReducer,
   counterReducer,
+  placarReducer,
 });
 
 export default rootReducer;
