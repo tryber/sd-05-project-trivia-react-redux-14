@@ -52,6 +52,17 @@ class PaginaInicial extends Component {
       localStorage.setItem('token', data);
     });
     this.cR();
+    localStorage.setItem(
+      'state',
+      JSON.stringify({
+        player: {
+          name: this.state.nome,
+          assertions: 0,
+          score: 0,
+          gravatarEmail: this.state.email,
+        },
+      }),
+    );
   }
 
   render() {

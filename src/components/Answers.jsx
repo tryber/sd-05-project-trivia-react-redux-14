@@ -25,15 +25,20 @@ class Answers extends Component {
   componentDidMount() {
     // this.setState({ player: { ...this.state.player, name: nome, gravatarEmail: email } });
     this.intervalChange();
+    const {nome, email} = this.props;
+    this.setState({player: {
+      name: nome,
+      assertions: 0,
+      score: 0,
+      gravatarEmail: email,
+    }},);
   }
 
-  // componentDidUpdate() {
-  //  const { playerR } = this.props;
-  //  const info = { player: this.state.player };
-  //  playerR(this.state.player);
-  //  localStorage.setItem('state', JSON.stringify(info));
-  // }
-
+  componentWillUpdate() {
+    //const { playerR } = this.props;
+    // playerR(this.state.player);
+  }
+  
   intervalChange() {
     this.setState({ timer: 30 });
     this.myInterval = setInterval(() => {
@@ -62,18 +67,16 @@ class Answers extends Component {
     playerR(this.state.player);
     // console.log(this.state.player);
   }
-
+  
   // prettier-ignore
   clickC() {
     const { playerR } = this.props;
     this.setState({ isClicked: true });
     this.points();
-    const info = { player: this.state.player };
     playerR(this.state.player);
-    localStorage.setItem('state', JSON.stringify(info));
     // console.log(this.state.player.assertions);
   }
-
+  
   // prettier-ignore
   clickI() {
     const { playerR } = this.props;
@@ -82,13 +85,13 @@ class Answers extends Component {
     playerR(this.state.player);
     localStorage.setItem('state', JSON.stringify(info));
   }
-
+  
   timeOut() {
     if (this.state.timer === 0) {
       this.setState({ isClicked: true });
     }
   }
-
+  
   // prettier-ignore
   points() {
     const { perguntas, count } = this.props;
@@ -97,26 +100,33 @@ class Answers extends Component {
       case 'hard':
         dif = 3;
         break;
-      case 'medium':
-        dif = 2;
-        break;
-      case 'easy':
-        dif = 1;
-        break;
-      default:
-        dif = 0;
-        break;
-    }
-    this.setState({
-      player: {
-        ...this.state.player,
-        score: this.state.player.score + ((this.state.timer * dif) + 10),
-        assertions: this.state.player.assertions + 1,
-      },
-    });
-    // playerR(this.state.player);
-  }
-
+        case 'medium':
+          dif = 2;
+          break;
+          case 'easy':
+            dif = 1;
+            break;
+            default:
+              dif = 0;
+              break;
+            }
+            this.setState({
+              player: {
+                ...this.state.player,
+                score: this.state.player.score + ((this.state.timer * dif) + 10),
+                assertions: this.state.player.assertions + 1,
+              },
+            });
+            // playerR(this.state.player);
+            localStorage.setItem('state', JSON.stringify({
+              player: {
+                ...this.state.player,
+                score: this.state.player.score + ((this.state.timer * dif) + 10),
+                assertions: this.state.player.assertions + 1,
+              },
+            }));
+          }
+          
   // prettier-ignore
   render() {
     const { perguntas, count } = this.props;
