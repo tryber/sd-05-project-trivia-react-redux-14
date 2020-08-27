@@ -1,6 +1,23 @@
+/* LAZY CSS MODE ON: */
+
+* {
+  background-color: black;
+  color: rgb(65, 255, 0);
+  font-family: 'VT323', monospace;
+  font-size: 110%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.col {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 17%;
+}
+
 .App {
   text-align: center;
-}
+ }
 
 .App-logo {
   height: 40vmin;

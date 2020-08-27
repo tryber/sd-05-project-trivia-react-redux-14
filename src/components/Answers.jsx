@@ -23,7 +23,6 @@ class Answers extends Component {
   }
 
   componentDidMount() {
-    // this.setState({ player: { ...this.state.player, name: nome, gravatarEmail: email } });
     this.intervalChange();
     this.setLocalstorage();
   }
@@ -37,11 +36,6 @@ class Answers extends Component {
       gravatarEmail: email,
     } });
   }
-
-// componentWillUpdate() {
-    // const { playerR } = this.props;
-    // playerR(this.state.player);
- //  }
 
   intervalChange() {
     this.setState({ timer: 30 });
@@ -69,7 +63,6 @@ class Answers extends Component {
     clearInterval(this.myInterval);
     this.intervalChange();
     playerR(this.state.player);
-    // console.log(this.state.player);
   }
 
   // prettier-ignore
@@ -78,7 +71,6 @@ class Answers extends Component {
     this.setState({ isClicked: true });
     this.points();
     playerR(this.state.player);
-    // console.log(this.state.player.assertions);
   }
 
   // prettier-ignore
@@ -121,7 +113,7 @@ class Answers extends Component {
         assertions: this.state.player.assertions + 1,
       },
     });
-    // playerR(this.state.player);
+
     localStorage.setItem('state', JSON.stringify({
       player: {
         ...this.state.player,

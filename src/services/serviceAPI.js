@@ -8,14 +8,6 @@ export const tokenAPI = () => (
           .json()
           .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json)))
           .then((data) => data.token)
-        // .then((data) =>  localStorage.setItem("token", data.token))
-        /* .then((fetch(`https://opentdb.com/api.php?amount=5&token=${localStorage.getItem("token")}`)) */
-        /* .then((qresponse) => (
-          qresponse
-            .json()
-            .then((json) => (qresponse.ok ? Promise.resolve(json) : Promise.reject(json)))
-            .then((json) => receiveQuestionsFromAPI(json))
-        )) */
       ),
     )
 );

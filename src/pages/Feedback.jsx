@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { zCounter, clearLog, zeroDados } from '../actions';
-// import Header from '../components/Header';
 
 class Feedback extends Component {
   constructor(props) {
@@ -21,11 +20,6 @@ class Feedback extends Component {
     }
     return localStorage.setItem('ranking', JSON.stringify([newRanking]));
   }
-
-// ranking
-// [
-//   {name: nome-da-pessoa, score: 10, picture: url-da-foto-no-gravatar}
-// ]
 
   text() {
     const { acertos } = this.props;
@@ -81,7 +75,6 @@ const mapDispatchtoProps = (dispatch) => ({
   zeroCount: () => dispatch(zCounter()),
   clearLogin: () => dispatch(clearLog()),
   clearPlacar: () => dispatch(zeroDados()),
-  // playerR: (player) => dispatch(dados(player)),
 });
 
 export default connect(mapStateToProps, mapDispatchtoProps)(Feedback);

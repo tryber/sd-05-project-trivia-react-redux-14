@@ -70,7 +70,7 @@ class PaginaInicial extends Component {
     const e = !email || !nome;
     if (clicked) return <Redirect to="/game" />;
     return (
-      <div>
+      <div className="col">
         <Link to="/settings" data-testid="btn-settings">
           Configurações
         </Link>
