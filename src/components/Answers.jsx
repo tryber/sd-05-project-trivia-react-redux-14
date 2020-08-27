@@ -129,7 +129,7 @@ class Answers extends Component {
     const { isClicked } = this.state;
     return (
       <div>
-        <h2>{this.state.timer}</h2>
+        <h2>Timer:{this.state.timer}</h2>
         {perguntas[count] && (
           <div>
             <button

@@ -10,10 +10,29 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 .col {
+  align-items: center;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 17%;
 }
+
+.inputz {
+  padding: 1%;
+}
+
+.btn{
+  border: 1px solid rgb(65, 255, 0);
+  border-radius: 0%;
+  padding: 10px;
+  width: 7%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
 
 .App {
   text-align: center;

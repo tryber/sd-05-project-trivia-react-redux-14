@@ -13,9 +13,9 @@ class TelaJogo extends Component {
       return <Redirect to="/feedback" />;
     }
     return (
-      <div>
+      <div className="game">
         <Header />
-        <h1>Tela de Jogo</h1>
+        {/* <h1>Tela de Jogo</h1> */}
         {perguntas[count] && (
           <div>
             <p data-testid="question-category">

@@ -71,11 +71,11 @@ class PaginaInicial extends Component {
     if (clicked) return <Redirect to="/game" />;
     return (
       <div className="col">
-        <Link to="/settings" data-testid="btn-settings">
+        <Link to="/settings" data-testid="btn-settings" style={{color: "black"}}>
           Configurações
         </Link>
-        <label htmlFor="nome">
-          Nome
+        <label htmlFor="nome" className="inputz">
+          Name
           <input
             type="text"
             data-testid="input-player-name"
@@ -83,7 +83,7 @@ class PaginaInicial extends Component {
             onChange={this.nomeChange}
           />
         </label>
-        <label htmlFor="email">
+        <label htmlFor="email" className="inputz">
           E-mail
           <input
             type="email"
@@ -92,7 +92,7 @@ class PaginaInicial extends Component {
             onChange={this.emailChange}
           />
         </label>
-        <button data-testid="btn-play" disabled={e} onClick={() => this.clickAPI()}>Jogar</button>
+        <button data-testid="btn-play" disabled={e} onClick={() => this.clickAPI()} className="btn">PLAY!</button>
       </div>
     );
   }
