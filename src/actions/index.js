@@ -8,15 +8,26 @@ export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS';
 export const RECEIVE_QUESTIONS_FROM_API = 'RECEIVE_QUESTIONS_FROM_API';
 export const COUNTER = 'COUNTER';
 export const DADOS = 'DADOS';
+export const ZEROU = 'ZEROU';
+export const CLEARLOG = 'CLEARLOG';
+export const ZERODADOS = 'ZERODADOS';
 
 export const dados = (player) => ({
   type: DADOS,
   player,
 });
 
+export const zeroDados = () => ({
+  type: ZERODADOS,
+});
+
 export const handleSubmit = (login) => ({
   type: LOGIN,
   login,
+});
+
+export const clearLog = () => ({
+  type: CLEARLOG,
 });
 
 const requestAPIdata = () => ({
@@ -44,6 +55,10 @@ export const receiveQuestionsFromAPI = (data) => ({
 
 export const counter = () => ({
   type: COUNTER,
+});
+
+export const zCounter = () => ({
+  type: ZEROU,
 });
 
 export function fetchToken() {

@@ -23,15 +23,18 @@ class Answers extends Component {
   }
 
   componentDidMount() {
-    // this.setState({ player: { ...this.state.player, name: nome, gravatarEmail: email } });
     this.intervalChange();
+    this.setLocalstorage();
   }
 
-  componentDidUpdate() {
-    const { playerR } = this.props;
-    const info = { player: this.state.player };
-    playerR(this.state.player);
-    localStorage.setItem('state', JSON.stringify(info));
+  setLocalstorage() {
+    const { nome, email } = this.props;
+    this.setState({ player: {
+      name: nome,
+      assertions: 0,
+      score: 0,
+      gravatarEmail: email,
+    } });
   }
 
   intervalChange() {
@@ -60,19 +63,23 @@ class Answers extends Component {
     clearInterval(this.myInterval);
     this.intervalChange();
     playerR(this.state.player);
-    // console.log(this.state.player);
   }
 
   // prettier-ignore
   clickC() {
+    const { playerR } = this.props;
     this.setState({ isClicked: true });
     this.points();
-    // console.log(this.state.player.assertions);
+    playerR(this.state.player);
   }
 
   // prettier-ignore
   clickI() {
+    const { playerR } = this.props;
     this.setState({ isClicked: true });
+    const info = { player: this.state.player };
+    playerR(this.state.player);
+    localStorage.setItem('state', JSON.stringify(info));
   }
 
   timeOut() {
@@ -106,7 +113,14 @@ class Answers extends Component {
         assertions: this.state.player.assertions + 1,
       },
     });
-    // playerR(this.state.player);
+
+    localStorage.setItem('state', JSON.stringify({
+      player: {
+        ...this.state.player,
+        score: this.state.player.score + ((this.state.timer * dif) + 10),
+        assertions: this.state.player.assertions + 1,
+      },
+    }));
   }
 
   // prettier-ignore
@@ -115,7 +129,7 @@ class Answers extends Component {
     const { isClicked } = this.state;
     return (
       <div>
-        <h2>{this.state.timer}</h2>
+        <h2>Timer:{this.state.timer}</h2>
         {perguntas[count] && (
           <div>
             <button
@@ -134,7 +148,7 @@ class Answers extends Component {
                 {respostaI}
               </button>
             ))}
-            {isClicked && (<button data-testid="btn-next" onClick={() => this.nQ()}>Next</button>)}
+            {isClicked && (<div><button className="btn" data-testid="btn-next" onClick={() => this.nQ()}>Next</button></div>)}
           </div>
         )}
       </div>
@@ -164,4 +178,6 @@ Answers.propTypes = {
     scoreR: PropTypes.number,
     assertionsR: PropTypes.number,
   }).isRequired,
+  nome: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 };
