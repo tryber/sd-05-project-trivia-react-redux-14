@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { handleSubmit, fetchToken, fetchQuestions } from '../actions';
+import { handleSubmit, fetchToken, fetchQuestions } from '../actions'
+import logo from '../question.png';
 
 const CryptoJS = require('crypto-js');
 
@@ -70,30 +71,33 @@ class PaginaInicial extends Component {
     const e = !email || !nome;
     if (clicked) return <Redirect to="/game" />;
     return (
-      <div className="col">
-        <Link to="/settings" data-testid="btn-settings" style={{color: "black"}}>
-          Configurações
-        </Link>
-        <label htmlFor="nome" className="inputz">
-          Name
-          <input
-            type="text"
-            data-testid="input-player-name"
-            value={this.state.nome}
-            onChange={this.nomeChange}
-          />
-        </label>
-        <label htmlFor="email" className="inputz">
-          E-mail
-          <input
-            type="email"
-            data-testid="input-gravatar-email"
-            value={this.state.email}
-            onChange={this.emailChange}
-          />
-        </label>
-        <button data-testid="btn-play" disabled={e} onClick={() => this.clickAPI()} className="btn">PLAY!</button>
-      </div>
+      <div>
+        <div className="col">
+        <img src={logo} alt="tryoutLogo" />  
+          <Link to="/settings" data-testid="btn-settings" style={{color: "black"}}>
+            Configurações
+          </Link>
+          <label htmlFor="nome" className="inputz">
+            Name
+            <input
+              type="text"
+              data-testid="input-player-name"
+              value={this.state.nome}
+              onChange={this.nomeChange}
+              />
+          </label>
+          <label htmlFor="email" className="inputz">
+            E-mail
+            <input
+              type="email"
+              data-testid="input-gravatar-email"
+              value={this.state.email}
+              onChange={this.emailChange}
+              />
+          </label>
+          <button data-testid="btn-play" disabled={e} onClick={() => this.clickAPI()} className="btn">PLAY!</button>
+        </div>
+   </div>
     );
   }
 }

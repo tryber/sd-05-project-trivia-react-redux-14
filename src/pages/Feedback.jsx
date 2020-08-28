@@ -40,25 +40,27 @@ class Feedback extends Component {
     const { nome, hash, placar, acertos } = this.props;
     return (
       <div>
-        <header>
+        <header >
+          <Link className="btn" data-testid="btn-play-again" to="/" onClick={() => this.clearStore()}>
+            Home  
+          </Link>
+          <Link className="btn" data-testid="btn-ranking" to="/ranking" onClick={() => this.clearStore()}>
+            Ranking
+          </Link>
           <p data-testid="header-score">{placar}</p>
         </header>
-        <h1>FEEDBACK</h1>
-        <img
-          data-testid="header-profile-picture"
-          src={`https://www.gravatar.com/avatar/${hash}`}
-          alt="foto de perfil"
-        />
-        <p data-testid="header-player-name">Jogador: {nome}</p>
-        <p data-testid="feedback-total-score">{placar}</p>
-        <p data-testid="feedback-total-question">{acertos}</p>
-        <Link data-testid="btn-play-again" to="/" onClick={() => this.clearStore()}>
-          Home
-        </Link>
-        <Link data-testid="btn-ranking" to="/ranking" onClick={() => this.clearStore()}>
-          Ranking
-        </Link>
-        <h2 data-testid="feedback-text">{this.state.message}</h2>
+        <h1 className="big">FEEDBACK</h1>
+        <div className="feed">
+          <img
+            data-testid="header-profile-picture"
+            src={`https://www.gravatar.com/avatar/${hash}`}
+            alt="foto de perfil"
+          />
+          <p data-testid="header-player-name">Player: {nome}</p>
+          <p data-testid="feedback-total-score">Score: {placar}</p>
+          <p data-testid="feedback-total-question">Assertions: {acertos}</p>
+        </div>
+        <h1 className="big" data-testid="feedback-text">{this.state.message}</h1>
       </div>
     );
   }

@@ -8,7 +8,7 @@ class Header extends Component {
     const { nome, hash, placar } = this.props;
     return (
       <header className="header">
-        <Link data-testid="btn-go-home" to="/">Home</Link>
+        <Link className="btn" data-testid="btn-go-home" to="/">Home</Link>
         <img
           data-testid="header-profile-picture"
           src={`https://www.gravatar.com/avatar/${hash}`}
